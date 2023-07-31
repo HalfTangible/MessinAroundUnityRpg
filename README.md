@@ -1,2 +1,2 @@
 # MessinAroundUnityRpg
-Initial Momentum prototype.
+Scratch paper but code/Unity.
