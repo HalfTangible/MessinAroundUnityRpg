@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using behaviorTypes;
 
 public class CharacterSheet : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class CharacterSheet : MonoBehaviour
      */
 
     public List<Ability> abilityList;
+    public List<AbilityBehavior> hitBy;
 
     // Update is called once per frame
     /*
@@ -77,7 +79,7 @@ public class CharacterSheet : MonoBehaviour
 
     public void addAbility(List<Ability> newAbilityList)
     {
-        foreach (var newAbility in newAbilityList)
+        foreach (Ability newAbility in newAbilityList)
         {
             addAbility(newAbility);
         }
@@ -93,5 +95,63 @@ public class CharacterSheet : MonoBehaviour
         return abilityList;
     }
     
+    public void uses(Ability ability)
+    {
+        spendMomentum(ability.momentumCost);
+
+    }
+
+    public void isHitBy(Ability attack)
+    {
+        foreach (AbilityBehavior behavior in attack.getAllBehaviors())
+        {
+            isHitBy(behavior);
+        }
+    }
+
+    public void isHitBy(AbilityBehavior behavior)
+    {
+        hitBy.Add(behavior);
+    }
+
+    public void effectsTrigger(goesOn currentPhase)
+    {
+        foreach(AbilityBehavior behavior in hitBy)
+        {
+            if(behavior.phase == currentPhase)
+                behavior.effectsTrigger(this);
+        }
+    }
+
+    public bool canUse(Ability ability)
+    {
+        //Check if the character can use the ability sent.\
+        //Iterate through the ability list and see if any of them match the ability being used.
+        //If yes, return True.
+        return true;
+    }
+
+    public bool isValidTarget(Ability ability, CharacterSheet user)
+    {
+        //Check if the ability was used on a valid target.
+        return true;
+    }
     
 }
+
+/*
+    public List<Ability> abilityList;
+    public List<AbilityBehavior> hitBy;
+
+
+    public void isHitBy(AbilityBehavior behavior)
+    {
+        hitBy.Add(behavior);
+    }
+
+    public void addAbility(Ability newAbility)
+    {
+        abilityList.Add(newAbility);
+    }
+ 
+ */

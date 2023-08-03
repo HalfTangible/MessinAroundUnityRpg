@@ -89,7 +89,7 @@ public class CombatStateMachine : MonoBehaviour
         UnityEngine.Debug.Log("useAbility method!");
         //Can the user use the ability?
         //Determine that before this point, actually.
-        ability.Perform(ref user, ref target);
+        ability.Perform(user, target);
     }
 
     void playerTurn()
