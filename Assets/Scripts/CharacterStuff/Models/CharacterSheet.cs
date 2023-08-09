@@ -119,7 +119,7 @@ public class CharacterSheet : MonoBehaviour
         foreach(AbilityBehavior behavior in hitBy)
         {
             if(behavior.phase == currentPhase)
-                behavior.effectsTrigger(this);
+                behavior.Trigger(this);
         }
     }
 
@@ -136,7 +136,16 @@ public class CharacterSheet : MonoBehaviour
         //Check if the ability was used on a valid target.
         return true;
     }
-    
+
+    public void DoDamage(int damage)
+    {
+        //Damage logic
+        health -= damage;
+    }
+    public void HealedBy(int amount)
+    {
+        health += amount;
+    }
 }
 
 /*

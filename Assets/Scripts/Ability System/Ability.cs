@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using behaviorTypes; //defined in AbilityBehavior
 
-public class Ability : MonoBehaviour
+[CreateAssetMenu(menuName = "ScriptableObjects/AbilityScriptableObject")]
+[System.Serializable]
+public class Ability : ScriptableObject
 {
 
-    BasicInfo basicInfo;
-    List<AbilityBehavior> behaviors;
+    public BasicInfo basicInfo;
     public int momentumCost;
     public int manaCost;
+    public List<AbilityBehavior> behaviors;
 
     // Start is called before the first frame update
     void Start()

@@ -5,7 +5,8 @@ using behaviorTypes;
 using System.ComponentModel;
 using System.Diagnostics;
 
-public class AbilityBehavior : MonoBehaviour
+[System.Serializable]
+public class AbilityBehavior
 {
     /*
         Damaging: does damage.
@@ -26,14 +27,14 @@ public class AbilityBehavior : MonoBehaviour
         NewRound: Activates at the start of a new round
      */
 
-    
+    public behaviorType theType;
+    public goesOn phase;
 
-    public float amount; //Amount of damage, healing, buffing, etc.
+    public int amount; //Amount of damage, healing, buffing, etc.
     public int duration; //Number of times this behavior acts
     public float chance; //Chance the ability goes off.
 
-    public behaviorType theType;
-    public goesOn phase;
+    
 
     public behaviorType getType() { return theType; }
     public goesOn getPhase() { return phase; }
@@ -41,41 +42,79 @@ public class AbilityBehavior : MonoBehaviour
     public int getDuration() { return duration; }
     public float getChance() { return chance; }
 
-    public void effectsTrigger(CharacterSheet target)
+    public virtual void Trigger(CharacterSheet target)
     {
         //Costs have already been paid and validity checked.
         //Switch statement based on the ability's type
+        
         switch (theType)
         {
             case behaviorType.Damaging:
-                doDamage(target);
+                DoDamage(target);
                 break;
             case behaviorType.Healing:
-                doHealing(target);
+                DoHealing(target);
                 break;
             case behaviorType.Buffing:
-                buffStat(target);
+                BuffStat(target);
                 break;
             case behaviorType.Debuffing:
-                debuffStat(target);
+                DebuffStat(target);
                 break;
             case behaviorType.Shielding:
-                createShield(target);
+                CreateShield(target);
                 break;
             case behaviorType.Defending:
-                defending(target);
+                Defending(target);
                 break;
             case behaviorType.Redirecting:
-                redirect(target);
+                Redirect(target);
                 break;
             case behaviorType.Stun:
-                stun(target);
+                Stun(target);
                 break;
             default:
                 UnityEngine.Debug.Log("Behavior type not recognized.");
                 break;
         }
     }
+    
+    //This can't be the easiest/cleanest way to do this.
+    //Let's do inheritance for AbilityBehavior instead.
+
+    public void DoDamage(CharacterSheet target)
+    {
+
+    }
+    public void DoHealing(CharacterSheet target)
+    {
+
+    }
+    public void BuffStat(CharacterSheet target)
+    {
+
+    }
+    public void DebuffStat(CharacterSheet target)
+    {
+
+    }
+    public void CreateShield(CharacterSheet target)
+    {
+
+    }
+    public void Defending(CharacterSheet target)
+    {
+
+    }
+    public void Redirect(CharacterSheet target)
+    {
+
+    }
+    public void Stun(CharacterSheet target)
+    {
+
+    }
+
 }
 
 
@@ -84,5 +123,5 @@ namespace behaviorTypes
 {
     public enum behaviorType { Damaging, Healing, Buffing, Debuffing, Shielding, Defending, Redirecting, Stun };
     public enum goesOn { OnHit, WhenHit, OnTurnStart, OnTurnEnd, NewRound };
-
+    public enum statToBuff { strength, defense }
 }

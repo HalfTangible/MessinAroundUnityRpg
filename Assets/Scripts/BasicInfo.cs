@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicInfo : MonoBehaviour
+[System.Serializable]
+public class BasicInfo
 {
-    private string name;
-    private string description;
-    private Sprite icon;
+    public string name;
+    public string description;
+    public Sprite icon;
 
 
     public BasicInfo(string name, string description)
