@@ -46,10 +46,13 @@ public class AbilityBehavior
     {
         //Costs have already been paid and validity checked.
         //Switch statement based on the ability's type
-        
+        AbilityBehavior theBehavior;
+        theBehavior = new Damage();
+
         switch (theType)
         {
             case behaviorType.Damaging:
+                //theBehavior = new Damage();
                 DoDamage(target);
                 break;
             case behaviorType.Healing:
@@ -77,6 +80,8 @@ public class AbilityBehavior
                 UnityEngine.Debug.Log("Behavior type not recognized.");
                 break;
         }
+
+        theBehavior.Trigger(target);
     }
     
     //This can't be the easiest/cleanest way to do this.

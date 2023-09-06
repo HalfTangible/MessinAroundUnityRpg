@@ -284,6 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee7ea9d3cf3fc4498d68ae2b6fb08f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPhase: 0
+  playerPartyObj: {fileID: 0}
+  enemyPartyObj: {fileID: 0}
 --- !u!1 &1164180492
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +344,8 @@ MonoBehaviour:
   warding: 2
   skill: 4
   wits: 4
+  abilityList: []
+  hitBy: []
 --- !u!1 &1195668282
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +449,8 @@ MonoBehaviour:
   warding: 0
   skill: 6
   wits: 2
+  abilityList: []
+  hitBy: []
 --- !u!1 &1566090133
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,6 +508,8 @@ MonoBehaviour:
   warding: 3
   skill: 3
   wits: 3
+  abilityList: []
+  hitBy: []
 --- !u!1 &1594033971
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,3 +567,11 @@ MonoBehaviour:
   warding: 4
   skill: 5
   wits: 4
+  abilityList:
+  - {fileID: 0}
+  hitBy:
+  - theType: 0
+    phase: 0
+    amount: 0
+    duration: 0
+    chance: 0
